@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
+import axios from 'axios';
+import APPID from '../keys/weather-key';
 
 class Timer extends React.Component {
   constructor(props){
@@ -7,13 +9,15 @@ class Timer extends React.Component {
   }
 
   componentDidMount(){
-    let time = +this.props.interval * (5000);
+    let time = +this.props.interval * (5000) || 10000;
+
     console.log("interval time", time)
 
     window.setInterval(function(){
       //notification code goes here
       Notification.requestPermission().then(function(result) {
         console.log('firing notification');
+
         // const createNotification = () => {
           const title = "Get up!";
 
@@ -22,18 +26,46 @@ class Timer extends React.Component {
             window.open('https://www.washingtonpost.com/apps/g/page/national/the-health-hazards-of-sitting/750/', '_blank');
           }
 
-          const options = {
-            body: "Sitting too long can cause oragan damage, such as heart disease :\(\n\nClick here for some stretches you can do at your desk!",
-            icon: "http://www.freeiconspng.com/uploads/exercise-icon-1.png"
-          }
+          // let lat, lon;
 
-          const notify = new Notification(title, options);
-          notify.onclick = onClickHandler;
+          navigator.geolocation.getCurrentPosition(function(position) {
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
+            const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${APPID}`;
+
+            console.log('hello', url);
+
+            axios.get(url)
+            .then(res => res.data)
+            .then(weatherData => {
+              console.log('howdy', weatherData)
+              let goOutside = false;
+              if (weatherData.main.temp - 293.15 > 0) {
+                goOutside = true;
+              }
+              const options = goOutside ? {
+                body: "It's nice outside, so get out there and run around!!!",
+                icon: "http://www.freeiconspng.com/uploads/exercise-icon-1.png"
+              } : {
+                body: "It's coldddd outside, but you still need to get movin', so click here for some exercies!",
+                icon: "http://www.freeiconspng.com/uploads/exercise-icon-1.png"
+              }
+              const notify = new Notification(title, options);
+              notify.onclick = onClickHandler;
+            })
+          })
+
+          // const baseURL = 'api.openweathermap.org/data/2.5/';
+
+          // const instance = axios.create({
+          //   baseURL: `weather?lat=${lat}&lon=${lon}&APPID=${APPID}`
+          // })
 
         // }
       });
 
-  }, time);
+
+    }, time);
   }
 
   render () {
