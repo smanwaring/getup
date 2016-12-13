@@ -23,7 +23,7 @@ class Timer extends React.Component {
 
           const onClickHandler = () => {
             console.log("clicked the notification");
-            window.open('https://www.youtube.com/watch?v=tyDA1myYlIg', '_blank');
+            window.open('https://www.youtube.com/watch?v=5NlmK8F276Y', '_blank');
           }
 
           // let lat, lon;
