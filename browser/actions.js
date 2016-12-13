@@ -8,8 +8,8 @@ export const setInterval = (time) => {
 	return {
 		type: SET_INTERVAL,
 		payload: time
-	}
-}
+	};
+};
 
 // export const receivedSinglePuppy = (puppy) => {
 // 	return {
@@ -31,7 +31,7 @@ export const setInterval = (time) => {
 // }
 
 // export const loadPuppy = (puppyId) => {
-// 	const thunk = function(dispatch){ 
+// 	const thunk = function(dispatch){
 // 		fetch(`/api/puppies/${puppyId}`)
 // 		.then(res => res.json())
 // 		.then(puppy => dispatch(receivedSinglePuppy(puppy)))

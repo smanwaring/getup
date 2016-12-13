@@ -9,14 +9,15 @@ class Timer extends React.Component {
   }
 
   componentDidMount(){
-    console.log("INTERVAL", this.props.interval)
-    let time = +this.props.interval * (5000);
+    let time = +this.props.interval * (5000) || 10000;
 
-    window.setTimeout(function(){
+    console.log("interval time", time)
+
+    window.setInterval(function(){
       //notification code goes here
-      Notification.requestPermission()
-      .then(function(result) {
-        console.log(result);
+      Notification.requestPermission().then(function(result) {
+        console.log('firing notification');
+
         // const createNotification = () => {
           const title = "Get up!";
 
@@ -24,7 +25,6 @@ class Timer extends React.Component {
             console.log("clicked the notification");
             window.open('https://www.washingtonpost.com/apps/g/page/national/the-health-hazards-of-sitting/750/', '_blank');
           }
-
 
           // let lat, lon;
 
@@ -40,7 +40,7 @@ class Timer extends React.Component {
             .then(weatherData => {
               console.log('howdy', weatherData)
               let goOutside = false;
-              if (weatherData.main.temp - 273.15 > 0) {
+              if (weatherData.main.temp - 293.15 > 0) {
                 goOutside = true;
               }
               const options = goOutside ? {
@@ -61,12 +61,11 @@ class Timer extends React.Component {
           //   baseURL: `weather?lat=${lat}&lon=${lon}&APPID=${APPID}`
           // })
 
-
-
         // }
       });
 
-    },1000);
+
+    }, time);
   }
 
   render () {
