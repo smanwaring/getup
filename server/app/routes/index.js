@@ -4,7 +4,7 @@
 const router = require('express').Router();
 module.exports = router;
 
-// router.use('/artists', require('./artists'));
+router.use('/weather', require('./weather'));
 // router.use('/albums', require('./albums'));
 // router.use('/playlists', require('./playlists'));
 // router.use('/songs', require('./songs'));
