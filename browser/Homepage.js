@@ -9,9 +9,8 @@ class Homepage extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    console.log("E.TARGET.TIME.VALUE", e.target.time.value)
     this.props.setTime(e.target.time.value);
-
+    hashHistory.push('/timer');
   }
 
   render () {
@@ -21,7 +20,7 @@ class Homepage extends React.Component {
           <input type="radio" name="time" value="1"/> Every Hour <br/>
           <input type="radio" name="time" value="2"/> Two Hours<br/>
           <input type="radio" name="time" value="3"/> Three Hours<br/>
-          <Link to='/timer'><input type="submit"/></Link>
+          <input type="submit"/>
        </form>
       </div>
     )
