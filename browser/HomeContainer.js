@@ -9,7 +9,6 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
 	return {
 		setTime: function(time){
-            console.log('inside the action creator: set time');
 			dispatch(setInterval(time));
 		}
 	};

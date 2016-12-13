@@ -8,13 +8,12 @@ class Timer extends React.Component {
 
   componentDidMount(){
     let time = +this.props.interval * (5000);
-    console.log("INTERVAL", this.props.interval)
-    console.log("time", time, typeof time)
+    console.log("interval time", time)
 
     window.setInterval(function(){
       //notification code goes here
       Notification.requestPermission().then(function(result) {
-        console.log(result);
+        console.log('firing notification');
         // const createNotification = () => {
           const title = "Get up!";
 

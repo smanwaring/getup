@@ -9,7 +9,6 @@ class Homepage extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    console.log("E.TARGET.TIME.VALUE", e.target.time.value)
     this.props.setTime(e.target.time.value);
     hashHistory.push('/timer');
   }
