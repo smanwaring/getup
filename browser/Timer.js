@@ -39,7 +39,9 @@ class Timer extends React.Component {
   render () {
     return (
       <div>
-        <h1>Hello World!</h1>
+        <div className="container">
+          <h2 className="landing-text">we're on it! happy browsing :) </h2>
+        </div>
       </div>
     )
   }

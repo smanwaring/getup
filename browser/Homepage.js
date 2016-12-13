@@ -18,6 +18,7 @@ class Homepage extends React.Component {
     return (
       <div>
         <div className="container">
+          <img src={"exercise-icon-1.png"} alt="getup" className="icon-stretch" height="200" width="200"/>
           <h2>hello. how often would you like #getup reminders?</h2>
 
           <form onSubmit={this.handleSubmit}>

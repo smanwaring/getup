@@ -14,7 +14,7 @@ body, html{
 .container{
   display: block;
   position: absolute;
-  margin: auto;
+  margin: 50px auto 80px auto;
   height: 450px;
   width: 400px;
   bottom: 0; left:0; right: 0; top:0;
@@ -117,6 +117,13 @@ input[type=radio]:checked ~ label{
   background-color: white;
 }
 
+.icon-stretch{
+  margin-left: 65px;
+}
+
+.landing-text{
+  margin-top: 50px;
+}
 
 
 
